@@ -1,0 +1,2 @@
+# Braille-Gesture-Type-Messenger
+To make blind people’s social lives easier, this project aims at making an android app and a website for SMS messaging that uses braille concept, using over 30+ gestures for typing alphabets, special characters and numbers and also spacing, newline features just by swiping in various patterns in the app. They also experience vibration of different levels and a voice output to verify what they typed is correct.
