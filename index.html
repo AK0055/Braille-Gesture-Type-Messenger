@@ -1,0 +1,97 @@
+<!DOCTYPE public>
+<html lang="en">
+	<head>
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="viewport" content = "width=device-width ,  user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="cleartype" content="on">
+		<script src="swipe/Tocca.js"></script>
+		<title>Braille Gesture Type SMS</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<link href='http://fonts.googleapis.com/css?family=Sansita+One' rel='stylesheet'/>
+		<link rel="stylesheet" href="css\app.css" />
+		<style type="text/css">
+			* {
+				font-family: Verdana;
+				text-decoration: none;
+			}
+			</style>
+		
+	</head>
+	<body>
+		<div id="lock-screen-container">
+			<h1>Braille Gesture Type SMS</h1>
+			<div class="buttons">
+				<button id="save-pattern-button" ></button>
+				<button id="unlock-button" class="button blue">Unlock</button>
+				<button id="reset-button" class="button blue">Reset</button>
+				
+				<br/>
+			</div>
+			<div id="lock-screen" />
+			
+		</div>
+		<div class="split right" >
+			<div>
+				<style>
+					#test {
+						position:absolute;
+						left:50%;
+						top:50%;
+						margin:-275px 0 0 -275px;
+						width:500px;
+						height:500px;
+						color:white;
+						background:black;
+						cursor:pointer;
+					}
+					dl {
+						color:gray;
+					}
+					</style>
+				<div id="test"></div>
+				<script src="js/bind.polyfill.js"></script>
+				<script src="js/Tocca.js"></script>
+				<script>
+				
+				var $ = document.querySelector.bind(document),
+						eventName = $('#eventName'),
+						currX = $('#currX'),
+						currY = $('#currY'),
+						distanceX = $('#distanceX'),
+						distanceY = $('#distanceY'),
+						test = $('#test'),
+						preventDefault = function(e){e.preventDefault();};
+				test.addEventListener('tap',updateHtml);
+				test.addEventListener('dbltap',updateHtml);
+				test.addEventListener('longtap',updateHtml);
+				test.addEventListener('longtap',updateHtml);
+				test.addEventListener('swipeup',updateHtml);
+				test.addEventListener('swipedown',updateHtml);
+				test.addEventListener('swipeleft',updateHtml);
+				test.addEventListener('swiperight',updateHtml);
+				test.addEventListener('touchmove',preventDefault);
+				test.addEventListener('touchstart',preventDefault);
+				test.addEventListener('touchend',preventDefault);
+				function updateHtml (e){
+					e.preventDefault();
+					eventName.innerHTML = test.innerHTML =  e.type;
+					currX.innerHTML = e.x;
+					currY.innerHTML = e.y;
+					distanceX.innerHTML = e.distance ? e.distance.x : 'not available';
+					distanceY.innerHTML = e.distance ? e.distance.y : 'not available';
+					return false;
+				}
+				</script>
+			</div>
+			</div>
+	</head>
+	<body>
+		<script src="js/kinetic-v4.6.js"></script>
+		<script src="js/source.js"></script>
+		<p><span id="out"></span></p>
+	</body>
+</html>
